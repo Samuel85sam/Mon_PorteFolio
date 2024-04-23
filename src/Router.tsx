@@ -1,16 +1,16 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import GuestRoute from './Guards/guest-route';
-import BlogPage from './routes/blog.page';
 import AuthPage from './routes/auth.page';
 import ProtectedRoute from './Guards/protected-route';
 import PostPage from './routes/post.page';
 import BackOfficePage from './routes/backOffice.page';
 import ErrorPage from './routes/error.page';
+import HomePage from './routes/Home.page';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <BlogPage />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
   },
   {
