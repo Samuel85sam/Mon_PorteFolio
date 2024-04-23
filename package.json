@@ -21,9 +21,13 @@
   "dependencies": {
     "@mantine/core": "7.8.0",
     "@mantine/hooks": "7.8.0",
+    "axios": "^1.6.8",
+    "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "yup": "^1.4.0",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.0.0",
