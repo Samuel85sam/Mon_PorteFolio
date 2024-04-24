@@ -1,4 +1,6 @@
-import axios from 'axios';
+/* eslint-disable max-len */
+/* eslint-disable consistent-return */
+import axios, { AxiosRequestConfig } from 'axios';
 import { AuthResponse, CreatePostPayload, Post, PostPopulatableKeys } from '../../../Types-Interfaces/CRUD-Types/CRUD.types';
 
 //axios.defaults.withCredentials = false;
@@ -29,7 +31,7 @@ import { AuthResponse, CreatePostPayload, Post, PostPopulatableKeys } from '../.
 
 const CRUD = {
 
-    auth: async (data) => {
+    auth: async (data: any) => {
         try {
             console.log({ data });
 
@@ -42,7 +44,7 @@ const CRUD = {
         }
     },
 
-    post: async (route, data) => {
+    post: async (route: any, data: any) => {
         const response = await axios.post(`${import.meta.env.VITE_API_HOST}/${route}`, data);
 
         if (response.status === 200) {
@@ -50,7 +52,7 @@ const CRUD = {
         }
     },
 
-    postForm: async (route: string, data: CreatePostPayload, headers) => {
+    postForm: async (route: string, data: CreatePostPayload, headers: AxiosRequestConfig<CreatePostPayload> | undefined) => {
         const response = await axios.postForm(`${import.meta.env.VITE_API_HOST}/${route}`, data, headers);
 
         if (response.status === 200) {
@@ -66,26 +68,26 @@ const CRUD = {
         }
     },
 
-    patchById: async (route: String, data) => {
+    patchById: async (route: String, data: any) => {
         try {
             const response = await axios.patch(`${import.meta.env.VITE_API_HOST}/${route}`, data);
             if (response.status === 200) {
                 return response;
             }
-                return response.status;
+            return response.status;
         } catch (err) {
             console.error(err);
             console.log({ err });
         }
     },
 
-    patchFormById: async (route: string, data, headers) => {
+    patchFormById: async (route: string, data: any, headers: AxiosRequestConfig<any> | undefined) => {
         try {
             const response = await axios.patchForm(`${import.meta.env.VITE_API_HOST}/${route}`, data, headers);
             if (response.status === 200) {
                 return response;
             }
-                return response.status;
+            return response.status;
         } catch (err) {
             console.error(err);
             console.log({ err });

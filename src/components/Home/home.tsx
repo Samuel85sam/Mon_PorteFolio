@@ -2,10 +2,11 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { AppShell, Burger, Group, UnstyledButton } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './home.module.css';
 import Logo from '../Logo/logo';
+import Gallery from '../Gallery/gallery';
 
 const Home = () => {
     const [main, setMain] = useState<any>(); // Définition de main comme de type any
@@ -18,14 +19,13 @@ const Home = () => {
         setMain('');
     };
 
-    const gallery = () => setMain('photo');
+    const gallery = () => setMain(<Gallery />);
 
     const contact = () => setMain('contact pop-up');
 
     const backOffice = () => {
         navigate('back_office');
     };
-
 
     return (
         <AppShell

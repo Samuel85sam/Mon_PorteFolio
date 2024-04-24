@@ -14,7 +14,6 @@ export interface Post {
   title: string
   author: User
   body: string
-  //img?: string | Img
   img?: Img | undefined
 }
 
