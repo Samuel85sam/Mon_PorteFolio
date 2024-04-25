@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable consistent-return */
 import axios, { AxiosRequestConfig } from 'axios';
-import { AuthResponse, CreatePostPayload, Post, PostPopulatableKeys } from '../../../Types-Interfaces/CRUD-Types/CRUD.types';
+import { AuthResponse, CreatePostPayload, Img, ImgPopulatableKeys, Post, PostPopulatableKeys } from '../../../Types-Interfaces/CRUD-Types/CRUD.types';
 
 //axios.defaults.withCredentials = false;
 
@@ -32,9 +32,8 @@ import { AuthResponse, CreatePostPayload, Post, PostPopulatableKeys } from '../.
 const CRUD = {
 
     auth: async (data: any) => {
-        try {
-            console.log({ data });
 
+        try {
             const response = await axios.post<AuthResponse>(`${import.meta.env.VITE_API_HOST}/auth`, data);
             console.log('CRUD==>', { response });
 
@@ -60,9 +59,16 @@ const CRUD = {
         }
     },
 
-    getForm: async (route: string, params?: { populate: PostPopulatableKeys[], type?: string }) => {
-        const response = await axios.get<Post | Post[]>(`${import.meta.env.VITE_API_HOST}/${route}`, { params });
+    getForm: async (route: string, params?: { populate?: PostPopulatableKeys[] | ImgPopulatableKeys[], type?: string }) => {
+        const response = await axios.get<Post | Post[] | Img | Img[] >(`${import.meta.env.VITE_API_HOST}/${route}`, { params });
 
+        if (response.status === 200) {
+            return response.data;
+        }
+    },
+
+    getImgs: async (route: string) => {
+        const response = await axios.get<Img[]>(`${import.meta.env.VITE_API_HOST}/${route}`);
         if (response.status === 200) {
             return response.data;
         }

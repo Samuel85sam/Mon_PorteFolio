@@ -30,9 +30,15 @@ export interface Img {
   size: number
 }
 
+export interface CreateImgPayload extends Omit<Img, '_id' | 'originalname' | 'path'> {
+}
+
 export interface AuthResponse {
   id: User['_id']
   jwt: User['jwt']
 }
 
 export type PostPopulatableKeys = keyof Pick<Post, 'author' | 'img' >;
+
+export type ImgPopulatableKeys = keyof Pick<Img, 'originalname' | 'type' | 'size' | 'path' >;
+
